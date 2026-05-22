@@ -1,0 +1,5 @@
+{
+  "name": "Eggs pickup",
+  "domains": ["eggs_pickup"],
+  "render_readme": true
+}
