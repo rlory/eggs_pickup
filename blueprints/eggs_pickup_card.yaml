@@ -1,0 +1,61 @@
+blueprint:
+  name: Carte Ramassage Oeufs
+  description: Carte Mushroom avec popup pour gestion oeufs
+  domain: lovelace
+  input:
+    input_number:
+      name: Compteur oeufs
+    input_datetime:
+      name: Date ramassage
+
+card:
+  type: custom:mushroom-template-card
+  entity: !input input_number
+  primary: Dernier ramassage des oeufs
+  secondary: >
+    {% set val = states(input_number) | int(0) %}
+    {% set d = states(input_datetime) %}
+
+    {% if d %}
+      {% set date = strptime(d, '%Y-%m-%d') %}
+      {% if (now().date() - date.date()).days == 0 %}
+        {{ val }} œufs aujourd'hui
+      {% elif (now().date() - date.date()).days == 1 %}
+        {{ val }} œufs hier
+      {% else %}
+        {{ val }} œufs le {{ date.strftime('%d/%m') }}
+      {% endif %}
+    {% endif %}
+
+  icon: mdi:egg-outline
+
+  tap_action:
+    action: call-service
+    service: browser_mod.popup
+    data:
+      title: 🥚 Ramassage des oeufs
+      content:
+        type: grid
+        columns: 5
+        cards:
+          {% for i in range(1, 11) %}
+          - type: button
+            name: "{{ i }}"
+            tap_action:
+              action: call-service
+              service: script.oeufs_{{ i }}
+          {% endfor %}
+
+  hold_action:
+    action: call-service
+    service: browser_mod.popup
+    data:
+      title: ✏️ Correction ramassage
+      content:
+        type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - entity: !input input_number
+              - entity: !input input_datetime
+``
