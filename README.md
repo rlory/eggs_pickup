@@ -1,11 +1,18 @@
 # eggs_pickup
 
 
-## Dependencies
+# Carte Ramassage Oeufs 🥚
 
-This integration requires:
+## Dépendances
 
-- [Mushroom Cards](https://github.com/piitaya/lovelace-mushroom)
-- [Browser Mod](https://github.com/thomasloven/hass-browser_mod)
+Installer via HACS :
 
-Install them via HACS before using this integration.
+- Mushroom Cards  
+- Browser Mod  
+- Card Mod  
+
+## Installation
+
+1. Installer dépendances
+2. Importer le blueprint
+3. Configurer inputs
