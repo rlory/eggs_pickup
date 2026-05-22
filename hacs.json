@@ -1,6 +1,5 @@
 {
-  "name": "Carte Oeufs",
-  "content_in_root": false,
-  "domains": [],
+  "name": "Eggs Pickup",
+  "content_in_root": true,
   "render_readme": true
 }
