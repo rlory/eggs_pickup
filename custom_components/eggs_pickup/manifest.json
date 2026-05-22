@@ -1,9 +1,0 @@
-{
-  "domain": "eggs_pickup",
-  "name": "Eggs pickup",
-  "version": "1.0.0",
-  "documentation": "https://github.com/rlory/eggs_pickup/",
-  "dependencies": [],
-  "codeowners": ["@rlory"],
-  "requirements": []
-}
